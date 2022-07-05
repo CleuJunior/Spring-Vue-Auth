@@ -1,7 +1,9 @@
 package com.cleonild.vuejava.controllers;
 
+import com.cleonild.vuejava.dto.UserDTO;
 import com.cleonild.vuejava.models.User;
 import com.cleonild.vuejava.repositories.UserRepository;
+import com.cleonild.vuejava.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,9 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final UserRepository userRepository;
+    private final UserService userService;
+
 
     @PostMapping(value = "/register")
-    public User register(@RequestBody User user) {
-        return this.userRepository.save(user);
+    public UserDTO register(@RequestBody User user) {
+        UserDTO userDTO = new UserDTO();
+
+        this.userRepository.save(user);
+
+        return this.userService.entityToDTO(user);
     }
 }
