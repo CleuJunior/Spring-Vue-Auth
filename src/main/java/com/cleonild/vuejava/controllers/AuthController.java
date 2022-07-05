@@ -20,11 +20,13 @@ public class AuthController {
 
 
     @PostMapping(value = "/register")
-    public UserDTO register(@RequestBody User user) {
-        UserDTO userDTO = new UserDTO();
+    public UserDTO register(@RequestBody UserDTO userDTO) {
+
+        User user = User.of(userDTO);
 
         this.userRepository.save(user);
 
-        return this.userService.entityToDTO(user);
+        return userDTO;
+
     }
 }
