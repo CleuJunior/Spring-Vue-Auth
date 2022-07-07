@@ -1,11 +1,13 @@
 package com.cleonild.vuejava.models;
 
+import com.cleonild.vuejava.config.BeanConfig;
 import com.cleonild.vuejava.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,8 +23,8 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "tb_user")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class User {
 
